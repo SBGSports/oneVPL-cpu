@@ -43,7 +43,7 @@ option(BUILD_OPENH264 "Build openH264" OFF)
 option(USE_EXPERIMENTAL_API "Enable oneVPL Experimental API." ON)
 option(USE_ONEAPI_INSTALL_LAYOUT "Use oneAPI install layout instead of FHS" OFF)
 option(USE_MSVC_STATIC_RUNTIME
-       "Link MSVC runtime statically to all components." OFF)
+       "Link MSVC runtime statically to all components." ON)
 
 if(USE_MSVC_STATIC_RUNTIME)
   set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
