@@ -47,7 +47,10 @@ endif()
 
 find_package(VPL 2.4 REQUIRED COMPONENTS api)
 message(STATUS "Found VPL (version ${VPL_VERSION})")
-target_link_libraries(${TARGET} PUBLIC VPL::api)
+target_link_libraries(${TARGET} 
+  PUBLIC VPL::api
+  -static-libgcc 
+  -static-libstdc++)
 
 if(BUILD_GPL_X264)
   add_definitions("-DENABLE_ENCODER_X264")
