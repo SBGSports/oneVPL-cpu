@@ -37,7 +37,7 @@ OPENH264_VERSION = 'v2.2.0'  # Current version is 2.3.1,
 # however that version causes some build issues when
 # compiling FFMPEG. These need to be resolved before
 # we can use it.
-FFMPEG_VERSION = 'n5.1.2'
+FFMPEG_VERSION = 'n6.1.1'
 
 # Folder this script is in
 SCRIPT_PATH = os.path.realpath(
@@ -465,9 +465,10 @@ def bootstrap(clean, h264_ip, build_mode, proj_dir, arch, validation):
                 build_gpl_x264_encoder(install_dir)
             elif h264_ip == 'openh264':
                 build_openh264_encoder(install_dir)
-            build_dav1d_decoder(install_dir)
-            build_svt_av1_encoder(install_dir, build_mode)
-            build_svt_hevc_encoder(install_dir, build_mode)
+            if arch == 'x86_64':
+                build_dav1d_decoder(install_dir)
+                build_svt_av1_encoder(install_dir, build_mode)
+                build_svt_hevc_encoder(install_dir, build_mode)
         #prepare ffmpeg build
         version = FFMPEG_VERSION
         if os.path.exists(f'FFmpeg-{version}'):
